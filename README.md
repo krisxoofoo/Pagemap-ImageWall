@@ -1,51 +1,42 @@
 Pagemap Imagewall
 *****************
 
-ABOUT
-=====
+### ABOUT
 Pagemap ImageWall is a web gallery script, free for private and commercial use, developed by Pagemap Premium Portfolios in Germany.
 
-SYSTEM REQUIREMENTS
-===================
+### SYSTEM REQUIREMENTS
 - Apache Webserver (recommended) or IIS
 - PHP version 4.3 or greater
 - PHP extension GDLib
 
-INSTALLATION
-============
+### INSTALLATION
 - Download a copy from http://getpagemap.com/pagemap-imagewall or https://github.com/krisxoofoo/Pagemap-ImageWall/archive/master.zip and unpack it on your webserver.
 - Open your web browser and go to the script at http://www.yourdomain.com/index.php
 - That's it. If you want to configure the script see next chapters.
 
-UNINSTALL
-=========
+### UNINSTALL
 Just rename the file index.php to uninstall.php and run the script.
 It will delete the cache directory and the config.txt if you are not able to do this via FTP.
 
-CONFIGURATION
-=============
+### CONFIGURATION
 You can change the look and feel of the gallery in many ways.
 Create a config.txt in the same directory as Pagemap ImageWall and check out the available Config Tags here: http://getpagemap.com/pagemap-imagewall
 
-EMBEDDING
-=========
+### EMBEDDING
 If you want to include the script (index.php) in a custom PHP file set Config Tag [Embedded Script'] to "on" and use $set['script name'] in your script to define the path to the Pagemap ImageWall script. You can optional define a root path for config file and default images dir with $set['script dir']. Also you should set [jQuery Path] to empty (this will disable the internal script) and include the framework in your HTML head.
 
-TROUBLESHOOTING
-===============
+### TROUBLESHOOTING
 If you are having problems installing or using Pagemap Imagewall, please visit the project website (http://getpagemap.com/pagemap-imagewall) and read the documentation or contact us: support@getpagemap.com
 or post issue here: https://github.com/krisxoofoo/Pagemap-ImageWall/issues
 
-LEGAL INFORMATION
-=================
+### LEGAL INFORMATION
 Pagemap Imagewall is written by Nico Wenig
 Copyright © 2010 by Pagemap Premium Portfolios. All rights reserved.
 
 The software is provieded as is, without warranty of any kind, express or implied, including but not limited to the warranties of merchantability, fitness for a particular purpose and noninfringement. In no event shall the authors or copyright holders be liable for any claim, damages or other liability, whether in an action of contract, tort or otherwise, arising from
 out of or in connectioin with the software or the use of other dealings in the software.
 
-TERMS OF USE:
-=============
+### TERMS OF USE:
 You are allows to:
 - Use for private and commercial
 - Copy and distribute the script
@@ -56,17 +47,16 @@ You are NOT allowed to:
 - Claim the script as your own
 - Sale parts of the script
 
-CONTACT THE AUTHOR
-==================
+### CONTACT THE AUTHOR
 Pagemap Premium Portfolios
 Glashüttenstraße 2, D-30165 Hannover
 Phone: +49(0)511 3405483
 Email: mail@getpagemap.com
 Web: http://getpagemap.com
 
-CHANGELOG
-=========
-v1.2 (Release 2013-05-06 modified by Kris - XooFoo.org)
+### CHANGELOG
+
+v1.2 (Release 2013-05-07 modified by Kris - XooFoo.org)
 + Updated to jQuery 2.0.0
 + Replaced config file extension txt by ini
 + Reformated and updated html code for standard compliance
@@ -77,6 +67,7 @@ v1.2 (Release 2013-05-06 modified by Kris - XooFoo.org)
 + Add Google Analytics script
 + Add Comments with Disqus script
 + Add robots.txt
++ Add TipTip jQuery plugin (credits: Drew Wilson)
 
 v1.2 (Release 2010-08-18)
 Added Pagemap favicon.

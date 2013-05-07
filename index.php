@@ -180,16 +180,16 @@ function mulit($count, $page, $perpage) {
 		return false;    
 	}
 	$i = 1;
-	$pager = "<nav id='mulit'><a href='?dir=$dir&page=1'><em>First</em></a>";
+	$pager = "<nav id='mulit'><a class='bulberight' href='?dir=$dir&page=1' title='First page'><em>First</em></a>";
 	while($allpage) {
 		$class = '';
 		if ($i == $page) {
 			$class = 'class = "current"'; 
 		}
 		if ($dir) {
-			$pager .= "<a href='?dir=$dir&page=$i'><em $class>";
+			$pager .= "<a href='?dir=$dir&page=$i' ><em $class>";
 		} else {
-			$pager .= "<a href='?page=$i'><em $class>";    
+			$pager .= "<a class='bulbeleft'  href='?page=$i' title='Go to page $i'><em $class>";    
 		}
 		$pager .= "$i";
 		$pager .= "</em></a>";
@@ -197,8 +197,8 @@ function mulit($count, $page, $perpage) {
 		$allpage --;
 	}
 	$next = $page + 1;
-	$pager .= "<a href='?dir=$dir&page=$last'><em>Last</em></a>";
-	$pager .= "<a href='?dir=$dir&page=$next'><em>NEXT</em></a></nav>";
+	$pager .= "<a class='bulberight' href='?dir=$dir&page=$last' title='Last page'><em>Last</em></a>";
+	$pager .= "<a class='bulbeleft' href='?dir=$dir&page=$next' title='Next page'><em>NEXT</em></a></nav>";
 	return $pager;
 }
 // DATA CHECK
@@ -409,7 +409,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		footer { margin-top: 25px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 11px; font-style: italic; text-align:center; line-height:1.6em; }
 		footer nav {font-size: 14px; padding: .5em 0; font-style: normal;}
 		footer, footer a { text-decoration: none; color: <?php echo $config['Footer Color']; ?>; }
-		/* LIGHTBOX */
+		/* SlimBox 2.04 */
 		#lbOverlay { position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: #000 url('<?php echo $set['script name']; ?>?symbol=overlay') repeat; }
 		#lbCenter, #lbBottomContainer { position: absolute; z-index: 9999;}
 		#lbCenter { z-index: 99999; }
@@ -425,6 +425,22 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		#lbCloseLink { display: block; float: right; width: 44px; height: 10px; outline: none; }
 		#lbCaption, #lbNumber { display: inline; }
 		#lbCaption { padding-right: 0.5em;}
+		/* TipTip 1.2 */
+		#tiptip_holder {display: none;position: absolute;top: 0;left: 0;z-index: 99999;}
+		#tiptip_holder.tip_top {padding-bottom: 5px;}
+		#tiptip_holder.tip_bottom {padding-top: 5px;}
+		#tiptip_holder.tip_right {padding-left: 5px;}
+		#tiptip_holder.tip_left {padding-right: 5px;}
+		#tiptip_content {text-align: center; font-size: 12px;color: #fff;text-shadow: 0 0 2px #000;padding: 4px 8px;border: 1px solid rgba(255,255,255,0.25);background-color: rgba(25,25,25,0.92);background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from(transparent), to(#000));border-radius: 3px;box-shadow: 0 0 3px #555;}
+		#tiptip_arrow, #tiptip_arrow_inner {position: absolute;border-color: transparent;border-style: solid;border-width: 6px;height: 0;width: 0;}
+		#tiptip_holder.tip_top #tiptip_arrow {border-top-color: #fff;border-top-color: rgba(255,255,255,0.35);}
+		#tiptip_holder.tip_bottom #tiptip_arrow {border-bottom-color: #fff;border-bottom-color: rgba(255,255,255,0.35);}
+		#tiptip_holder.tip_right #tiptip_arrow {border-right-color: #fff;border-right-color: rgba(255,255,255,0.35);}
+		#tiptip_holder.tip_left #tiptip_arrow {border-left-color: #fff;border-left-color: rgba(255,255,255,0.35);}
+		#tiptip_holder.tip_top #tiptip_arrow_inner {margin-top: -7px;margin-left: -6px;border-top-color: rgb(25,25,25);border-top-color: rgba(25,25,25,0.92);}
+		#tiptip_holder.tip_bottom #tiptip_arrow_inner {margin-top: -5px;margin-left: -6px;border-bottom-color: rgb(25,25,25);border-bottom-color: rgba(25,25,25,0.92);}
+		#tiptip_holder.tip_right #tiptip_arrow_inner {margin-top: -6px;margin-left: -5px;border-right-color: rgb(25,25,25);border-right-color: rgba(25,25,25,0.92);}
+		#tiptip_holder.tip_left #tiptip_arrow_inner {margin-top: -6px;margin-left: -7px;border-left-color: rgb(25,25,25);border-left-color: rgba(25,25,25,0.92);}
 		/* CUSTOM CSS */
 	<?php echo $config['Custom CSS']; ?>
 	</style>
@@ -444,9 +460,9 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 <?php if($config['Embedded Script'] == 'off') { ?>
 	<?php if(!empty($config['Header Image'])) { ?>
 		<header>
-			<h1><?php if(!empty($config['Home Page'])) { ?><a href="<?php echo $config['Home Page']; ?>"><?php } ?><img src="<?php echo $config['Header Image']; ?>" alt="Header Image" /><?php if(!empty($config['Home Page'])) { ?></a><?php } ?>
+			<h1><?php if(!empty($config['Home Page'])) { ?><a class="bulberight" href="<?php echo $config['Home Page']; ?>" ><?php } ?><img src="<?php echo $config['Header Image']; ?>" alt="Header Image" /><?php if(!empty($config['Home Page'])) { ?></a><?php } ?>
 			<span>
-			<?php if(!empty($config['Gallery Title'])) { ?><?php if(!empty($config['Home Page'])) { ?><a href="<?php echo $config['Home Page']; ?>"><?php } ?><?php echo $config['Gallery Title']; ?><?php if(!empty($config['Home Page'])) { ?></a><?php } ?><?php } ?>
+			<?php if(!empty($config['Gallery Title'])) { ?><?php if(!empty($config['Home Page'])) { ?><a class="bulbetop" href="<?php echo $config['Home Page']; ?>" title="<?php echo $config['Gallery Description']; ?>"><?php } ?><?php echo $config['Gallery Title']; ?><?php if(!empty($config['Home Page'])) { ?></a><?php } ?><?php } ?>
 			</span></h1>
 		</header>
 	<?php } ?>
@@ -457,7 +473,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 	<?php } ?><p>
 	<?php for($i = 0; $i < $number_of_images; $i++) { ?>
 		<?php $image_title = str_replace('_', ' ', substr($images[$i], 0, strrpos($images[$i], '.'))); ?>
-			<a href="<?php echo (empty($config['Image Size']) ? '' : $set['script name'] . '?image=') . $config['Images Dir'] . $images[$i]; ?>" title="<?php echo $image_title; ?>" target="_blank" rel="lightbox[p]"><img onmouseover="$(this).fadeTo('fast', 0.5)" onmouseout="$(this).fadeTo('fast', 1)" onload="$(this).completed = 1; $(this).delay(60 * <?php echo $i + 1; ?>).fadeTo('slow', 1)" src="<?php echo $set['script name']; ?>?thumbnail=<?php echo $config['Images Dir'] . $images[$i]; ?>" alt="<?php echo $image_title; ?>" width="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" height="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" /></a>
+			<a class="bulbe" href="<?php echo (empty($config['Image Size']) ? '' : $set['script name'] . '?image=') . $config['Images Dir'] . $images[$i]; ?>" title="<?php echo $image_title; ?>" target="_blank" rel="lightbox[p]"><img onmouseover="$(this).fadeTo('fast', 0.5)" onmouseout="$(this).fadeTo('fast', 1)" onload="$(this).completed = 1; $(this).delay(60 * <?php echo $i + 1; ?>).fadeTo('slow', 1)" src="<?php echo $set['script name']; ?>?thumbnail=<?php echo $config['Images Dir'] . $images[$i]; ?>" alt="<?php echo $image_title; ?>" width="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" height="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" /></a>
 	<?php } ?>
 		</p>
 		<?php if($mulit) echo $mulit;?>
@@ -477,14 +493,14 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 			})();
 		</script>
 		<p><noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-		<a href="http://disqus.com" class="dsq-brlink">Comments powered by <span class="logo-disqus">Disqus</span></a></p>
+		<a href="http://disqus.com" class="dsq-brlink bulbe">Comments powered by <span class="logo-disqus">Disqus</span></a></p>
 		<?php } ?>
 		
 	</section>
 <?php if($config['Embedded Script'] == 'off') { ?>
 	<footer>
-		<nav><?php if(!empty($config['Home Page'])) { ?><a href="<?php echo $config['Home Page']; ?>">Home</a> • <?php } ?><?php if(!empty($config['Contact'])) { ?><a href="<?php echo $config['Contact']; ?>">Contact</a> • <?php } ?><?php if(!empty($config['Imprint'])) { ?><a href="<?php echo $config['Imprint']; ?>">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
-		<p>Powered by <a href="http://getpagemap.com/pagemap-imagewall/" title="A free web gallery script for portfolio websites"><strong>Pagemap ImageWall</strong></a> modified by <a href="http://www.xoofoo.org/" title="XooFoo Websites"><strong>XooFoo</strong></a></p>
+		<nav><?php if(!empty($config['Home Page'])) { ?><a class="bulbe" href="<?php echo $config['Home Page']; ?>" title="Go to the home page">Home</a> • <?php } ?><?php if(!empty($config['Contact'])) { ?><a class="bulbe" href="<?php echo $config['Contact']; ?>" title="Contact us">Contact</a> • <?php } ?><?php if(!empty($config['Imprint'])) { ?><a class="bulbe" href="<?php echo $config['Imprint']; ?>" "Imprint this page">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
+		<p>Powered by <a class="bulbe" href="http://getpagemap.com/pagemap-imagewall/" title="A free web gallery script for portfolio websites"><strong>Pagemap ImageWall</strong></a> modified by <a class="bulbe" href="http://www.xoofoo.org/" title="XooFoo Websites"><strong>XooFoo</strong></a></p>
 	</footer>
 <?php } ?>
 
@@ -514,7 +530,18 @@ if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator
 		return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
 	});
 }
+/* TipTip - Copyright 2010 Drew Wilson - code.drewwilson.com/entry/tiptip-jquery-plugin */
+(function($){$.fn.tipTip=function(options){var defaults={activation:"hover",keepAlive:false,maxWidth:"200px",edgeOffset:3,defaultPosition:"bottom",delay:400,fadeIn:200,fadeOut:200,attribute:"title",content:false,enter:function(){},exit:function(){}};var opts=$.extend(defaults,options);if($("#tiptip_holder").length<=0){var tiptip_holder=$('<div id="tiptip_holder" style="max-width:'+opts.maxWidth+';"></div>');var tiptip_content=$('<div id="tiptip_content"></div>');var tiptip_arrow=$('<div id="tiptip_arrow"></div>');$("body").append(tiptip_holder.html(tiptip_content).prepend(tiptip_arrow.html('<div id="tiptip_arrow_inner"></div>')));}else{var tiptip_holder=$("#tiptip_holder");var tiptip_content=$("#tiptip_content");var tiptip_arrow=$("#tiptip_arrow");}return this.each(function(){var org_elem=$(this);if(opts.content){var org_title=opts.content;}else{var org_title=org_elem.attr(opts.attribute);}if(org_title!=""){if(!opts.content){org_elem.removeAttr(opts.attribute);}var timeout=false;if(opts.activation=="hover"){org_elem.hover(function(){active_tiptip();},function(){if(!opts.keepAlive){deactive_tiptip();}});if(opts.keepAlive){tiptip_holder.hover(function(){},function(){deactive_tiptip();});}}else if(opts.activation=="focus"){org_elem.focus(function(){active_tiptip();}).blur(function(){deactive_tiptip();});}else if(opts.activation=="click"){org_elem.click(function(){active_tiptip();return false;}).hover(function(){},function(){if(!opts.keepAlive){deactive_tiptip();}});if(opts.keepAlive){tiptip_holder.hover(function(){},function(){deactive_tiptip();});}}function active_tiptip(){opts.enter.call(this);tiptip_content.html(org_title);tiptip_holder.hide().removeAttr("class").css("margin","0");tiptip_arrow.removeAttr("style");var top=parseInt(org_elem.offset()['top']);var left=parseInt(org_elem.offset()['left']);var org_width=parseInt(org_elem.outerWidth());var org_height=parseInt(org_elem.outerHeight());var tip_w=tiptip_holder.outerWidth();var tip_h=tiptip_holder.outerHeight();var w_compare=Math.round((org_width-tip_w)/2);var h_compare=Math.round((org_height-tip_h)/2);var marg_left=Math.round(left+w_compare);var marg_top=Math.round(top+org_height+opts.edgeOffset);var t_class="";var arrow_top="";var arrow_left=Math.round(tip_w-12)/2;if(opts.defaultPosition=="bottom"){t_class="_bottom";}else if(opts.defaultPosition=="top"){t_class="_top";}else if(opts.defaultPosition=="left"){t_class="_left";}else if(opts.defaultPosition=="right"){t_class="_right";}var right_compare=(w_compare+left)<parseInt($(window).scrollLeft());var left_compare=(tip_w+left)>parseInt($(window).width());if((right_compare&&w_compare<0)||(t_class=="_right"&&!left_compare)||(t_class=="_left"&&left<(tip_w+opts.edgeOffset+5))){t_class="_right";arrow_top=Math.round(tip_h-13)/2;arrow_left=-12;marg_left=Math.round(left+org_width+opts.edgeOffset);marg_top=Math.round(top+h_compare);}else if((left_compare&&w_compare<0)||(t_class=="_left"&&!right_compare)){t_class="_left";arrow_top=Math.round(tip_h-13)/2;arrow_left=Math.round(tip_w);marg_left=Math.round(left-(tip_w+opts.edgeOffset+5));marg_top=Math.round(top+h_compare);}var top_compare=(top+org_height+opts.edgeOffset+tip_h+8)>parseInt($(window).height()+$(window).scrollTop());var bottom_compare=((top+org_height)-(opts.edgeOffset+tip_h+8))<0;if(top_compare||(t_class=="_bottom"&&top_compare)||(t_class=="_top"&&!bottom_compare)){if(t_class=="_top"||t_class=="_bottom"){t_class="_top";}else{t_class=t_class+"_top";}arrow_top=tip_h;marg_top=Math.round(top-(tip_h+5+opts.edgeOffset));}else if(bottom_compare|(t_class=="_top"&&bottom_compare)||(t_class=="_bottom"&&!top_compare)){if(t_class=="_top"||t_class=="_bottom"){t_class="_bottom";}else{t_class=t_class+"_bottom";}arrow_top=-12;marg_top=Math.round(top+org_height+opts.edgeOffset);}if(t_class=="_right_top"||t_class=="_left_top"){marg_top=marg_top+5;}else if(t_class=="_right_bottom"||t_class=="_left_bottom"){marg_top=marg_top-5;}if(t_class=="_left_top"||t_class=="_left_bottom"){marg_left=marg_left+5;}tiptip_arrow.css({"margin-left":arrow_left+"px","margin-top":arrow_top+"px"});tiptip_holder.css({"margin-left":marg_left+"px","margin-top":marg_top+"px"}).attr("class","tip"+t_class);if(timeout){clearTimeout(timeout);}timeout=setTimeout(function(){tiptip_holder.stop(true,true).fadeIn(opts.fadeIn);},opts.delay);}function deactive_tiptip(){opts.exit.call(this);if(timeout){clearTimeout(timeout);}tiptip_holder.fadeOut(opts.fadeOut);}}});}})(jQuery);
+/* Init tooltip */
+jQuery(function(){
+	jQuery(".bulbe").tipTip();
+	jQuery(".bulberight").tipTip({maxWidth: "auto", defaultPosition: "right"});
+	jQuery(".bulbeleft").tipTip({maxWidth: "auto", defaultPosition: "left"});
+	jQuery(".bulbetop").tipTip({maxWidth: "auto", defaultPosition: "top"});
+});	
+</script>
 <?php if(!empty($config['Disqus Shortname'])) { ?>
+<script>
 <!-- disqus count -->
 	var disqus_shortname = '<?php echo $config['Disqus Shortname']; ?>';
 	(function () {
@@ -523,8 +550,10 @@ if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator
 		s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
 		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
 	}());
+</script>
 <?php } ?>
 <?php if(!empty($config['GoogleAnalytics Account'])) { ?>
+<script>
 <!-- ga -->
   var _gaq = _gaq || [];
   _gaq.push(['_setAccount', '<?php echo $config['GoogleAnalytics Account']; ?>']);
@@ -535,6 +564,6 @@ if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator
 	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
 	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
   })();
-<?php } ?>
 </script>
+<?php } ?>
 <?php if($config['Embedded Script'] == 'off') { ?></body></html><?php } else $set = null; ?>
