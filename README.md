@@ -4,6 +4,8 @@ Pagemap Imagewall
 ### ABOUT
 Pagemap ImageWall is a web gallery script, free for private and commercial use, developed by Pagemap Premium Portfolios in Germany.
 
+Demo kris : http://test.xoofoo.org/pagemap/
+
 ### SYSTEM REQUIREMENTS
 - Apache Webserver (recommended) or IIS
 - PHP version 4.3 or greater
@@ -56,7 +58,7 @@ Web: http://getpagemap.com
 
 ### CHANGELOG
 
-v1.2 (Release 2013-05-07 modified by Kris - XooFoo.org)
+v1.2 (Release 2013-05-08 modified by Kris - XooFoo.org)
 + Updated to jQuery 2.0.0
 + Replaced config file extension txt by ini
 + Reformated and updated html code for standard compliance

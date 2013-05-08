@@ -80,18 +80,18 @@ $config['ImageWall Width'] = 'auto';
 $config['Header Image'] = '';
 $config['Background'] = 'white';
 $config['Header Color'] = 'silver';
+$config['Content Color'] = 'black';
 $config['Footer Color'] = 'silver';
 $config['Custom CSS'] = '';
 $config['Custom FileCSS'] = '';
 $config['Custom HTML'] = '';
-$config['Home Page'] = 'My Gallery';
+$config['Home Page'] = 'localhost';
 $config['Contact'] = '';
 $config['Imprint'] = '';
 $config['Images Dir'] = '';
 $config['Images List'] = '';
 $config['Exclude Images'] = '';
 $config['Disqus Shortname'] = '';
-$config['Disqus UrlPage'] = '';
 $config['GoogleAnalytics Account'] = '';
 $config['Per Page'] = '24';
 // SET CONFIG
@@ -385,13 +385,13 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		html { height: 100%;}
 		* {  margin: 0; padding: 0;}
 		article, aside, figure, footer, header, hgroup, nav, section {  display:block;}
-		body { margin: 15px 25px; background: <?php echo $config['Background']; ?>; text-align: center; font: 12px 'Trebuchet MS', Arial, Helvetica, sans-serif; color: <?php echo $config['Footer Color']; ?>; }
+		body { margin: 15px 25px; background: <?php echo $config['Background']; ?>; text-align: center; font: 12px 'Trebuchet MS', Arial, Helvetica, sans-serif; color: <?php echo $config['Content Color']; ?>; }
 	</style>
 <?php } ?>
 	<style type="text/css">
 		/* GALLERY */
 		p.error { width: 550px; margin: 50px auto; font-size: 14px; line-height:1.5em; text-align:center;}
-		#imagewall { width: <?php echo $config['ImageWall Width']; ?>; margin: 0 auto; text-align: center; line-height: 0; font-size: 0; }
+		#imagewall { max-width: <?php echo $config['ImageWall Width']; ?>; margin: 0 auto; text-align: center; line-height: 0; font-size: 0; }
 		#imagewall img { margin: 1px; }
 		header h1 {margin: 20px 20px 30px 20px;text-align: center;}
 		header h1 span {font-size: 24px;display: block; padding-top:20px; font-weight: 400;text-shadow: 0 1px 1px #fff;text-decoration: none;color: <?php echo $config['Header Color']; ?>;}
@@ -404,7 +404,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		#mulit em {border: solid 1px #ccc;padding: 2px 7px;margin: 0 3px 0 0;}
 		#mulit .current {border: solid 1px #7dc0d1;color:#7dc0d1;}
 		#mulit a {color:#999;text-decoration:none;}
-		footer { margin-top: 25px; font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 11px; font-style: italic; text-align:center; line-height:1.6em; }
+		footer { margin-top: 15px; margin-bottom: 25px;height:80px;font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 11px; font-style: italic; text-align:center; line-height:1.6em; }
 		footer nav {font-size: 14px; padding: .5em 0; font-style: normal;}
 		footer, footer a { text-decoration: none; color: <?php echo $config['Footer Color']; ?>; }
 		/* SlimBox 2.04 */
@@ -457,7 +457,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		<header>
 			<h1><?php if(!empty($config['Home Page'])) { ?><a class="bulberight" href="<?php echo $config['Home Page']; ?>" ><?php } ?><img src="<?php echo $config['Header Image']; ?>" alt="Header Image" /><?php if(!empty($config['Home Page'])) { ?></a><?php } ?>
 			<span>
-			<?php if(!empty($config['Gallery Title'])) { ?><?php if(!empty($config['Home Page'])) { ?><a class="bulbetop" href="<?php echo $config['Home Page']; ?>" title="<?php echo $config['Gallery Description']; ?>"><?php } ?><?php echo $config['Gallery Title']; ?><?php if(!empty($config['Home Page'])) { ?></a><?php } ?><?php } ?>
+			<?php if(!empty($config['Gallery Title'])) { ?><?php if(!empty($config['Home Page'])) { ?><a class="bulbetop" href="<?php echo $config['Home Page']; ?>" data-infos="<?php echo $config['Gallery Description']; ?>"><?php } ?><?php echo $config['Gallery Title']; ?><?php if(!empty($config['Home Page'])) { ?></a><?php } ?><?php } ?>
 			</span></h1>
 		</header>
 	<?php } ?>
@@ -478,8 +478,6 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		<script>
 			var disqus_shortname = '<?php echo $config['Disqus Shortname']; ?>';
 			// The following are highly recommended additional parameters. Remove the slashes in front to use.
-			// var disqus_identifier = 'unique_dynamic_id_1234';
-			var disqus_url = '<?php echo $config['Disqus UrlPage']; ?>';
 			/* * * DON'T EDIT BELOW THIS LINE * * */
 			(function() {
 				var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -494,7 +492,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 	</section>
 <?php if($config['Embedded Script'] == 'off') { ?>
 	<footer>
-		<nav><?php if(!empty($config['Home Page'])) { ?><a class="bulbe" href="<?php echo $config['Home Page']; ?>" data-infos="Go to the home page">Home</a> • <?php } ?><?php if(!empty($config['Contact'])) { ?><a class="bulbe" href="<?php echo $config['Contact']; ?>" data-infos="Contact us">Contact</a> • <?php } ?><?php if(!empty($config['Imprint'])) { ?><a class="bulbe" href="<?php echo $config['Imprint']; ?>" "Imprint this page">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
+		<nav><?php if(!empty($config['Home Page'])) { ?><a class="bulbe" href="<?php echo $config['Home Page']; ?>" data-infos="Go to the home page">Home</a><?php } ?><?php if(!empty($config['Contact'])) { ?> • <a class="bulbe" href="<?php echo $config['Contact']; ?>" data-infos="Contact us">Contact</a><?php } ?><?php if(!empty($config['Imprint'])) { ?> • <a class="bulbe" href="<?php echo $config['Imprint']; ?>" "Imprint this page">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
 		<p>Powered by <a class="bulbe" href="http://getpagemap.com/pagemap-imagewall/" data-infos="A free web gallery script for portfolio websites"><strong>Pagemap ImageWall</strong></a> modified by <a class="bulbe" href="http://www.xoofoo.org/" data-infos="XooFoo Websites"><strong>XooFoo</strong></a></p>
 	</footer>
 <?php } ?>
@@ -535,18 +533,6 @@ jQuery(function(){
 	jQuery(".bulbetop").tipTip({maxWidth: "auto", defaultPosition: "top"});
 });	
 </script>
-<?php if(!empty($config['Disqus Shortname'])) { ?>
-<script>
-<!-- disqus count -->
-	var disqus_shortname = '<?php echo $config['Disqus Shortname']; ?>';
-	(function () {
-		var s = document.createElement('script'); s.async = true;
-		s.type = 'text/javascript';
-		s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(s);
-	}());
-</script>
-<?php } ?>
 <?php if(!empty($config['GoogleAnalytics Account'])) { ?>
 <script>
 <!-- ga -->
