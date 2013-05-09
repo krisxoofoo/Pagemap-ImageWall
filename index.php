@@ -419,9 +419,9 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		#lbPrevLink:hover { background: url('<?php echo $set['script name']; ?>?symbol=prev') no-repeat left center; }
 		#lbNextLink { right: 0; }
 		#lbNextLink:hover { background: url('<?php echo $set['script name']; ?>?symbol=next') right center no-repeat; }
-		#lbBottom { padding: 5px 10px; text-align: left; font: 11px 'Trebuchet MS', Arial, Helvetica, sans-serif; line-height: 10px; color: #000; font-weight: bold;}
+		#lbBottom { padding: 5px 10px; text-align: left; font: 12px 'Trebuchet MS', Arial, Helvetica, sans-serif; line-height: 10px; color: #000; font-weight: bold;}
 		#lbCloseLink { display: block; float: right; width: 44px; height: 10px; outline: none; }
-		#lbCaption, #lbNumber { /*display: inline;*/ display:none; }
+		#lbCaption, #lbNumber { display: inline; }
 		#lbCaption { padding-right: 0.5em;}
 		/* TipTip 1.2 */
 		#tiptip_holder {display: none;position: absolute;top: 0;left: 0;z-index: 99999;}
@@ -518,19 +518,9 @@ jQuery(function(){
 });	
 // Slimbox v2.04 (c) Christophe Beyls (http://www.digitalia.be)
 eval(function(p,a,c,k,e,r){e=function(c){return(c<a?'':e(parseInt(c/a)))+((c=c%a)>35?String.fromCharCode(c+29):c.toString(36))};if(!''.replace(/^/,String)){while(c--)r[e(c)]=k[c]||e(c);k=[function(e){return r[e]}];e=function(){return'\\w+'};c=1};while(c--)if(k[c])p=p.replace(new RegExp('\\b'+e(c)+'\\b','g'),k[c]);return p}('(3($){p g=$(R),4,k,q=-1,H,A,B,S,T,n,r,13=!R.20,U=[],1p=1q.1p,6={},14=15 V(),16=15 V(),s,7,v,I,21,J,K,C,L,17,18;$(3(){$("22").W($([s=$(\'<o m="23" />\')[0],7=$(\'<o m="24" />\')[0],C=$(\'<o m="25" />\')[0]]).t("X","1r"));v=$(\'<o m="26" />\').1s(7).W(I=$(\'<o z="D: 28;" />\').W([J=$(\'<a m="29" Y="#" />\').M(19)[0],K=$(\'<a m="2a" Y="#" />\').M(1a)[0]])[0])[0];$(I).2b(1t=$(\'<o m="2c" z="D: 1u; 1b: 0;" />\'));L=$(\'<o m="2d" />\').1s(C).W([$(\'<a m="2e" Y="#" />\').1v(s).M(1c)[0],17=$(\'<o m="2f" />\')[0],18=$(\'<o m="2g" />\')[0],$(\'<o z="2h: 2i;" />\')[0]])[0]});$.1d=3(a,b,c){4=$.2j({N:Z,1w:0.8,1e:10,1f:10,1g:"2k",1x:1y,1z:1y,1A:10,1B:10,1C:"V {x} 2l {y}",1D:[27,2m,2n],1E:[2o,2p],1F:[2q,2r]},c);5(2s a=="2t"){a=[[a,b]];b=0}T=g.1G()+(g.9()/2);n=4.1x;r=4.1z;$(7).t({11:O.1H(0,T-(r/2)),h:n,9:r,1h:-n/2}).1i();S=13||(s.1I&&(s.1I.D!="2u"));5(S)s.z.D="1u";$(s).t("1J",4.1w).1K(4.1e);D();1j(1);k=a;4.N=4.N&&(k.u>1);j 12(b)};$.P.1d=3(c,d,e){d=d||3(a){j[a.Y,a.2v]};e=e||3(){j 1L};p f=1M;j f.1N("M").M(3(){p b=1M,1k=0,E,i=0,u;E=$.2w(f,3(a,i){j e.2x(b,a,i)});2y(u=E.u;i<u;++i){5(E[i]==b)1k=i;E[i]=d(E[i],i)}j $.1d(E,1k,c)})};3 D(){p l=g.2z(),w=g.h();$([7,C]).t("1b",l+(w/2));5(S)$(s).t({1b:l,11:g.1G(),h:w,9:g.9()})}3 1j(c){5(c){$("2A").1v(13?"2B":"2C").1O(3(a,b){U[a]=[b,b.z.F];b.z.F="1l"})}2D{$.1O(U,3(a,b){b[0].z.F=b[1]});U=[]}p d=c?"2E":"1N";g[d]("2F 2G",D);$(1q)[d]("2H",1P)}3 1P(a){p b=a.2I,P=$.2J;j(P(b,4.1D)>=0)?1c():(P(b,4.1F)>=0)?1a():(P(b,4.1E)>=0)?19():Z}3 19(){j 12(A)}3 1a(){j 12(B)}3 12(a){5(a>=0){q=a;H=k[q][0];A=(q||(4.N?k.u:0))-1;B=((q+1)%k.u)||(4.N?0:-1);Q();7.1Q="2K";6=15 V();6.1R=1S;6.G=H}j Z}3 1T(a,b,c,d){5(c>a)c=a;5(d>b)d=b;p e=O.2L(c/a,d/b);j[O.1U(e*a),O.1U(e*b)]}3 1S(){7.1Q="";$(v).t({F:"1l",X:""});p a=1T(6.h,6.9,$(R).h()-2M,$(R).9()-2N);6.h=a[0];6.9=a[1];$(1t).1m(\'<2O G="\'+H+\'" h="\'+6.h+\'" 9="\'+6.9+\'" />\');$(I).h(6.h);$([I,J,K]).9(6.9);$(17).1m(k[q][1]||"");$(18).1m((((k.u>1)&&4.1C)||"").1V(/{x}/,q+1).1V(/{y}/,k.u));5(A>=0)14.G=k[A][0];5(B>=0)16.G=k[B][0];n=v.1W;r=v.1n;p b=O.1H(0,T-(r/2));5(7.1n!=r){$(7).1o({9:r,11:b},4.1f,4.1g)}5(7.1W!=n){$(7).1o({h:n,1h:-n/2},4.1f,4.1g)}$(7).2P(3(){$(C).t({h:n,11:b+r,1h:-n/2,F:"1l",X:""});$(v).t({X:"1r",F:"",1J:""}).1K(4.1A,1X)})}3 1X(){5(A>=0)$(J).1i();5(B>=0)$(K).1i();$(L).t("1Y",-L.1n).1o({1Y:0},4.1B);C.z.F=""}3 Q(){6.1R=2Q;6.G=14.G=16.G=H;$([7,v,L]).Q(1L);$([J,K,v,C]).1Z()}3 1c(){5(q>=0){Q();q=A=B=-1;$(7).1Z();$(s).Q().2R(4.1e,1j)}j Z}})(2S);',62,179,'|||function|options|if|preload|center||height||||||||width||return|images||id|centerWidth|div|var|activeImage|centerHeight|overlay|css|length|image||||style|prevImage|nextImage|bottomContainer|position|filteredLinks|visibility|src|activeURL|sizer|prevLink|nextLink|bottom|click|loop|Math|fn|stop|window|compatibleOverlay|middle|hiddenElements|Image|append|display|href|false|400|top|changeImage|ie6|preloadPrev|new|preloadNext|caption|number|previous|next|left|close|slimbox|overlayFadeDuration|resizeDuration|resizeEasing|marginLeft|show|setup|startIndex|hidden|html|offsetHeight|animate|documentElement|document|none|appendTo|imageContainer|absolute|add|overlayOpacity|initialWidth|250|initialHeight|imageFadeDuration|captionAnimationDuration|counterText|closeKeys|previousKeys|nextKeys|scrollTop|max|currentStyle|opacity|fadeIn|true|this|unbind|each|keyDown|className|onload|animateBox|aspectRatio|round|replace|offsetWidth|animateCaption|marginTop|hide|XMLHttpRequest|imageFull|body|lbOverlay|lbCenter|lbBottomContainer|lbImage||relative|lbPrevLink|lbNextLink|prepend|lbImageContainer|lbBottom|lbCloseLink|lbCaption|lbNumber|clear|both|extend|swing|of|88|67|37|80|39|78|typeof|string|fixed|title|grep|call|for|scrollLeft|object|select|embed|else|bind|scroll|resize|keydown|keyCode|inArray|lbLoading|min|75|100|img|queue|null|fadeOut|jQuery'.split('|'),0,{}))
+jQuery(function(e){e("#imagewall-container a[rel^='lightbox']").slimbox({},function(e){return[e.href,e.getAttribute("data-infos")]},function(e){return this==e||this.rel.length>8&&this.rel==e.rel})})
 // Init Slimbox
-if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {
-	$("#imagewall-container a[rel^='lightbox']").slimbox({
-		counterText: "({x} / {y})",
-		initialWidth: 200,
-		initialHeight: 200,
-		overlayOpacity: 0.85,
-		resizeDuration: 300,
-		captionAnimationDuration: 200
-	}, null, function(el) {
-		return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));
-	});
-}
+if(!/android|iphone|ipod|series60|symbian|windows ce|blackberry/i.test(navigator.userAgent)) {$("#imagewall-container a[rel^='lightbox']").slimbox({counterText: "({x} / {y})",initialWidth: 200,initialHeight: 200,overlayOpacity: 0.85,resizeDuration: 300,captionAnimationDuration: 200},null,function(el) {return (this == el) || ((this.rel.length > 8) && (this.rel == el.rel));});}
 </script>
 <?php if(!empty($config['GoogleAnalytics Account'])) { ?>
 <script>
