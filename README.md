@@ -22,7 +22,7 @@ It will delete the cache directory and the config.txt if you are not able to do 
 
 ### CONFIGURATION
 You can change the look and feel of the gallery in many ways.
-Create a config.txt in the same directory as Pagemap ImageWall and check out the available Config Tags here: http://getpagemap.com/pagemap-imagewall
+Create a config.ini in the same directory as Pagemap ImageWall and check out the available Config Tags here: http://getpagemap.com/pagemap-imagewall
 
 ### EMBEDDING
 If you want to include the script (index.php) in a custom PHP file set Config Tag [Embedded Script'] to "on" and use $set['script name'] in your script to define the path to the Pagemap ImageWall script. You can optional define a root path for config file and default images dir with $set['script dir']. Also you should set [jQuery Path] to empty (this will disable the internal script) and include the framework in your HTML head.
