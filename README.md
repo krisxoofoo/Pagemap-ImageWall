@@ -58,11 +58,11 @@ Web: http://getpagemap.com
 
 ### CHANGELOG
 
-v1.2 (Release 2013-05-08 modified by Kris - XooFoo.org)
+v1.2 (Release 2013-05-13 modified by Kris - XooFoo.org)
 + Updated to jQuery 2.0.0
 + Replaced config file extension txt by ini
 + Reformated and updated html code for standard compliance
-+ Cleaning php code
++ Cleaning php and js code
 + Improved more config tags: [Meta Keywords: ], [ImageWall Width: ], [Other JS: ], [Footer Color: ], [Custom FileCSS: ], [Disqus Shortname: ],[Disqus UrlPage: ], [GoogleAnalytics Account: ] and [Per Page: ]
 + Add little cache system (credits: Rafael Paulino)
 + Add Page navigation (credits: V Song)

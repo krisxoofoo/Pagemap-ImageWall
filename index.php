@@ -386,6 +386,12 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		* {  margin: 0; padding: 0;}
 		article, aside, figure, footer, header, hgroup, nav, section {  display:block;}
 		body { margin: 15px 25px; background: <?php echo $config['Background']; ?>; text-align: center; font: 12px 'Trebuchet MS', Arial, Helvetica, sans-serif; color: <?php echo $config['Content Color']; ?>; }
+		header h1 {margin: 20px 20px 30px 20px;text-align: center;}
+		header h1 span {font-size: 24px;display: block; padding-top:20px; font-weight: 400;text-shadow: 0 1px 1px #fff;text-decoration: none;color: <?php echo $config['Header Color']; ?>;}
+		header h1 span a { text-decoration: none;color: <?php echo $config['Header Color']; ?>;}
+		footer { margin-top: 15px; margin-bottom: 25px;height:80px;font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 11px; font-style: italic; text-align:center; line-height:1.6em; }
+		footer nav {font-size: 14px; padding: .5em 0; font-style: normal;}
+		footer, footer a { text-decoration: none; color: <?php echo $config['Footer Color']; ?>; }
 	</style>
 <?php } ?>
 	<style type="text/css">
@@ -393,20 +399,14 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 		p.error { width: 550px; margin: 50px auto; font-size: 14px; line-height:1.5em; text-align:center;}
 		#imagewall { max-width: <?php echo $config['ImageWall Width']; ?>; margin: 0 auto; text-align: center; line-height: 0; font-size: 0; }
 		#imagewall img { margin: 1px; }
-		header h1 {margin: 20px 20px 30px 20px;text-align: center;}
-		header h1 span {font-size: 24px;display: block; padding-top:20px; font-weight: 400;text-shadow: 0 1px 1px #fff;text-decoration: none;color: <?php echo $config['Header Color']; ?>;}
-		header h1 span a { text-decoration: none;color: <?php echo $config['Header Color']; ?>;}
 		#imagewall-container {clear:both;}
-		#imagewall-container a img { border: none; box-shadow: 0 0 10px rgba(0,0,0,0.5) ; background: #fff; border-radius: 5px; padding:8px; margin:6px !important;}
-		#imagewall-container a img:hover {-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;-webkit-transform: rotate(10deg);-moz-transform: rotate(10deg);-o-transform: rotate(10deg);transform: rotate(10deg);}
+		#imagewall-container a img { border: none; box-shadow: 0 0 10px rgba(0,0,0,0.5) ; background: #fff; border-radius: 5px; padding:8px; margin:6px !important; width: <?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>; height: <?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>;}
+		#imagewall-container a img:hover {-webkit-transition: all 0.4s ease-in-out;-moz-transition: all 0.4s ease-in-out;-o-transition: all 0.4s ease-in-out;transition: all 0.4s ease-in-out;-webkit-transform: rotate(10deg);-moz-transform: rotate(10deg);-o-transform: rotate(10deg);transform: rotate(10deg);opacity:.5;}
 		#mulit li {list-style:none;}
 		#mulit {font-size:12px;text-align:center;padding: 0 0 10px 0;margin: 30px 0 10px 0;}
 		#mulit em {border: solid 1px #ccc;padding: 2px 7px;margin: 0 3px 0 0;}
 		#mulit .current {border: solid 1px #7dc0d1;color:#7dc0d1;}
 		#mulit a {color:#999;text-decoration:none;}
-		footer { margin-top: 15px; margin-bottom: 25px;height:80px;font-family: 'Trebuchet MS', Arial, Helvetica, sans-serif; font-size: 11px; font-style: italic; text-align:center; line-height:1.6em; }
-		footer nav {font-size: 14px; padding: .5em 0; font-style: normal;}
-		footer, footer a { text-decoration: none; color: <?php echo $config['Footer Color']; ?>; }
 		/* SlimBox 2.04 */
 		#lbOverlay { position: fixed; z-index: 9999; left: 0; top: 0; width: 100%; height: 100%; background: #000 url('<?php echo $set['script name']; ?>?symbol=overlay') repeat; }
 		#lbCenter, #lbBottomContainer { position: absolute; z-index: 9999;}
@@ -468,7 +468,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 	<?php } ?><p>
 	<?php for($i = 0; $i < $number_of_images; $i++) { ?>
 		<?php $image_title = str_replace('_', ' ', substr($images[$i], 0, strrpos($images[$i], '.'))); ?>
-			<a class="bulbe" href="<?php echo (empty($config['Image Size']) ? '' : $set['script name'] . '?image=') . $config['Images Dir'] . $images[$i]; ?>" data-infos="<?php echo $image_title; ?>" title="<?php echo $image_title; ?>" target="_blank" rel="lightbox[p]"><img onmouseover="$(this).fadeTo('fast', 0.5)" onmouseout="$(this).fadeTo('fast', 1)" onload="$(this).completed = 1; $(this).delay(60 * <?php echo $i + 1; ?>).fadeTo('slow', 1)" src="<?php echo $set['script name']; ?>?thumbnail=<?php echo $config['Images Dir'] . $images[$i]; ?>" alt="<?php echo $image_title; ?>" width="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" height="<?php echo p_getThumbnailSize($config['Thumbnail Size']); ?>" /></a>
+			<a class="bulbe" href="<?php echo (empty($config['Image Size']) ? '' : $set['script name'] . '?image=') . $config['Images Dir'] . $images[$i]; ?>" data-infos="<?php echo $image_title; ?>" title="<?php echo $image_title; ?>" target="_blank" rel="lightbox[p]"><img src="<?php echo $set['script name']; ?>?thumbnail=<?php echo $config['Images Dir'] . $images[$i]; ?>" alt="<?php echo $image_title; ?>" /></a>
 	<?php } ?>
 		</p>
 		<?php if($mulit) echo $mulit;?>
@@ -491,7 +491,7 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 	</section>
 <?php if($config['Embedded Script'] == 'off') { ?>
 	<footer>
-		<nav><?php if(!empty($config['Home Page'])) { ?><a class="bulbe" href="<?php echo $config['Home Page']; ?>" title="Go to the home page">Home</a><?php } ?><?php if(!empty($config['Contact'])) { ?> • <a class="bulbe" href="<?php echo $config['Contact']; ?>" title="Contact us">Contact</a><?php } ?><?php if(!empty($config['Imprint'])) { ?> • <a class="bulbe" href="<?php echo $config['Imprint']; ?>" "Imprint this page">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
+		<nav><?php if(!empty($config['Home Page'])) { ?><a class="bulbe" href="<?php echo $config['Home Page']; ?>" title="Go to the home page">Home</a><?php } ?><?php if(!empty($config['Contact'])) { ?> • <a class="bulbe" href="<?php echo $config['Contact']; ?>" title="Contact us">Contact</a><?php } ?><?php if(!empty($config['Imprint'])) { ?> • <a class="bulbe" href="<?php echo $config['Imprint']; ?>" title="Imprint this page">Imprint</a> <?php } ?></nav><?php if(!empty($config['Author'])) { ?><p>Photos by <strong><?php echo $config['Author']; ?></strong> - Copyright © 2013 - All rights reserved.</p><?php } ?>
 		<p>Powered by <a class="bulbe" href="http://getpagemap.com/pagemap-imagewall/" title="A free web gallery script for portfolio websites"><strong>Pagemap ImageWall</strong></a> modified by <a class="bulbe" href="http://www.xoofoo.org/" title="XooFoo Websites"><strong>XooFoo</strong></a></p>
 	</footer>
 <?php } ?>
@@ -499,10 +499,6 @@ if($config['Embedded Script'] == 'off' || headers_sent() == false) header('conte
 <?php echo $config['Custom HTML']; ?>
 </div>
 <script>
-// Add fade effect to thumbnails
-$("#imagewall-container img").each(
-	function() { $(this).css('opacity', typeof $(this).completed == 'undefined' ? '0' : '1'); }
-);
 <?php if($config['Embedded Script'] == 'off') { ?>
 // Set width of ImageWall to browser width
 $('#imagewall').css({width: $('#imagewall-container').width() + 'px'});
