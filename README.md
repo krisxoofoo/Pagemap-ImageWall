@@ -4,7 +4,7 @@ Pagemap Imagewall
 ### ABOUT
 Pagemap ImageWall is a web gallery script, free for private and commercial use, developed by Pagemap Premium Portfolios in Germany.
 
-Demo kris : http://test.xoofoo.org/pagemap/
+Demo kris : https://xoofoo.org/demo/pagemap/
 
 ### SYSTEM REQUIREMENTS
 - Apache Webserver (recommended) or IIS
@@ -12,7 +12,7 @@ Demo kris : http://test.xoofoo.org/pagemap/
 - PHP extension GDLib
 
 ### INSTALLATION
-- Download a copy from http://getpagemap.com/pagemap-imagewall or https://github.com/krisxoofoo/Pagemap-ImageWall/archive/master.zip and unpack it on your webserver.
+- Download a copy from https://github.com/krisxoofoo/Pagemap-ImageWall/archive/master.zip and unpack it on your webserver.
 - Open your web browser and go to the script at http://www.yourdomain.com/index.php
 - That's it. If you want to configure the script see next chapters.
 
@@ -22,14 +22,13 @@ It will delete the cache directory and the config.txt if you are not able to do 
 
 ### CONFIGURATION
 You can change the look and feel of the gallery in many ways.
-Create a config.ini in the same directory as Pagemap ImageWall and check out the available Config Tags here: http://getpagemap.com/pagemap-imagewall
+Create a config.ini in the same directory as Pagemap ImageWall and check out the available Config Tags
 
 ### EMBEDDING
 If you want to include the script (index.php) in a custom PHP file set Config Tag [Embedded Script'] to "on" and use $set['script name'] in your script to define the path to the Pagemap ImageWall script. You can optional define a root path for config file and default images dir with $set['script dir']. Also you should set [jQuery Path] to empty (this will disable the internal script) and include the framework in your HTML head.
 
 ### TROUBLESHOOTING
-If you are having problems installing or using Pagemap Imagewall, please visit the project website (http://getpagemap.com/pagemap-imagewall) and read the documentation or contact us: support@getpagemap.com
-or post issue here: https://github.com/krisxoofoo/Pagemap-ImageWall/issues
+If you are having problems installing or using Pagemap Imagewall, please visit the project website post issue here: https://github.com/krisxoofoo/Pagemap-ImageWall/issues
 
 ### LEGAL INFORMATION
 Pagemap Imagewall is written by Nico Wenig
@@ -45,7 +44,6 @@ You are allows to:
 - Customize the function and design
 
 You are NOT allowed to:
-- Delete the link to getpagemap.com in the footer
 - Claim the script as your own
 - Sale parts of the script
 
@@ -53,8 +51,6 @@ You are NOT allowed to:
 Pagemap Premium Portfolios
 Glashüttenstraße 2, D-30165 Hannover
 Phone: +49(0)511 3405483
-Email: mail@getpagemap.com
-Web: http://getpagemap.com
 
 ### CHANGELOG
 
